@@ -1,3 +1,24 @@
+Requirement 1: User Registration
+Begin 
+	Display registration form
+	Input Name
+        Input Email
+        Input PhoneNumber
+        Input Password
+
+        If  (Name = null OR Email = null OR PhoneNumber = null OR Password = null) 
+                Display "Please fill in all required fields"
+        Else 
+                If  (Email already exists in database)
+        		Display "Email already registered"
+    	        Else 
+        		Store Name, Email, PhoneNumber, Password in database
+        		Display "Registration Successful"
+                Endif 
+        Endif 
+End 
+
+
 Requirement 2: (Browse menu & search)
 BEGIN
         DISPLAY Menu Categories
@@ -33,19 +54,5 @@ ELSE IF User chooses “Checkout” THEN
 END IF
 END
 
-Requirement 4: Payment Process
-START
-   DISPLAY item in cart
-   IF item in Cart_Session == null THEN
-      DISPLAY "Error: You have no item in your cart"
-   ELSE
-      PaymentResponse = Gateway.Authorize(PaymentDetails, Total_Price)
-   END IF
-   IF PaymentResponse == "SUCCESS" THEN
-      Transfer USER's money to VENDOR
-      DISPLAY "Payment Successful!"
-   ELSE
-      DISPLAY "Payment Declined"
-   END IF
-END
+
 
