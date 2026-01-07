@@ -54,5 +54,20 @@ ELSE IF User chooses “Checkout” THEN
 END IF
 END
 
+Requirement 4: Payment Process
+START
+   DISPLAY item in cart
+   IF item in Cart_Session == null THEN
+      DISPLAY "Error: You have no item in your cart"
+   ELSE
+      PaymentResponse = Gateway.Authorize(PaymentDetails, Total_Price)
+   END IF
+   IF PaymentResponse == "SUCCESS" THEN
+      Transfer USER's money to VENDOR
+      DISPLAY "Payment Successful!"
+   ELSE
+      DISPLAY "Payment Declined"
+   END IF
+END
 
 
