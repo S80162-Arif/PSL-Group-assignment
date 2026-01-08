@@ -70,4 +70,41 @@ START
    END IF
 END
 
-
+Requirement 5: Order Tracking 
+Start
+    Open apps/website
+    Navigate to Order Tracking page
+    
+    IF user is logged in THEN
+        Select order from Order History
+    ELSE
+        PROMPT user for Order ID and phone/email
+    END IF
+    
+    IF order is found THEN
+        FETCH current order status and ETA
+        DISPLAY status and ETA to user
+        
+        WHILE order status is NOT "Delivered" AND NOT "Canceled" DO
+            WAIT for update interval
+            REFRESH order status
+            
+            IF status is updated THEN
+                NOTIFY user
+                DISPLAY new status
+            ELSE
+                CONTINUE
+            END IF
+            
+            IF status is "Prepared" OR "Out for Delivery" THEN
+                DISPLAY live status tracking
+            END IF
+        END WHILE
+        
+        DISPLAY final status ("Delivered" or "Canceled")
+        DISPLAY receipt if available
+    ELSE
+        DISPLAY "Order not found" message
+    END IF
+    
+END
